@@ -14,15 +14,15 @@ import { Button } from "./ui/button";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { LogOut } from "lucide-react";
 import NavItems from "./NavItems";
+import { signOut } from "@/lib/actions/auth.actions";
 
-export default function UserDropdown() {
+export default function UserDropdown({ user }: { user: User }) {
   const router = useRouter();
 
   const handleSignOut = async () => {
-    router.push("/signin");
+    await signOut();
+    router.push("/sign-in");
   };
-
-  const user = { name: "John", email: "test@wp.pl" };
 
   return (
     <DropdownMenu>
